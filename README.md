@@ -1,5 +1,5 @@
 # cron
-node js based cron
+Node based cron
 
 Prerequisites
     
