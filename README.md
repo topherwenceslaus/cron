@@ -11,4 +11,5 @@ Prerequisites
 To Run
     
     node app 16:10 cron.file
+    node app <HH:MM> <file name should match the same name in our project folder>
     
