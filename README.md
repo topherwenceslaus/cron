@@ -6,7 +6,7 @@ Prerequisites
     Install Node
     Create a folder
     Download app.js and save in the above folder
-    Save scheduler config in the same directory as app.js as cron.file
+    Save scheduler config in the same directory as app.js naming cron.file
     
 To Run
     
