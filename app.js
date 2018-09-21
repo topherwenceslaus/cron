@@ -30,8 +30,14 @@ rl.on('close', function () {
         })
     })
 
+   
 let today = new Date().setHours(input[0],input[1],00,00)
-let currentDate = new Date(today).getDate()
+let now = {
+    currentDate : new Date(today).getDate(),
+    hours: new Date(today).getHours(),
+    mins: new Date(today).getMinutes()
+}
+
 
 const dailyCron = () =>{
     let daily = new Date().setHours(cronTimings.daily.hour,cronTimings.daily.mins,00,00)
@@ -41,16 +47,16 @@ const dailyCron = () =>{
 
 const hourlyCron = () =>{
     if(Number(cronTimings.hourly.mins) >= Number(input[1])){
-        return `${new Date(today).getHours()}:${cronTimings.hourly.mins} today - ${cronTimings.daily.path}`
+        return `${now.hours}:${cronTimings.hourly.mins} today - ${cronTimings.daily.path}`
     }
     else{
         let hour = new Date(today + (60 * 60 * 1000))
-        return `${hour.getHours()}:${cronTimings.hourly.mins} ${hour.getDate() == currentDate ? "today" : "tomorrow"} - ${cronTimings.daily.path}`
+        return `${hour.getHours()}:${cronTimings.hourly.mins} ${hour.getDate() == now.currentDate ? "today" : "tomorrow"} - ${cronTimings.daily.path}`
     }
 }
 
 const everyMinute = () =>{
-    return `${new Date(today).getHours()}:${new Date(today).getMinutes()} today - ${cronTimings.everyMinute.path}`
+    return `${now.hours}:${now.mins} today - ${cronTimings.everyMinute.path}`
 }
 
 const everyHour = () =>{
