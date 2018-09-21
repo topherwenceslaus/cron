@@ -1,3 +1,12 @@
+
+if(process.argv[2] && process.argv[3]){
+    //Go on
+}
+else{
+    console.log(`Invalid input
+    Valid Format: app 16:10 cron.file`)
+    process.exit()
+}
 const readline = require('readline');
 const cronTimings = {
     daily : { },
@@ -7,12 +16,13 @@ const cronTimings = {
 }
 
 let cronInput = []
-const input = "16:10".split(':')
+const input = process.argv[2].split(':')
 
 let rl = readline.createInterface({
-    input: require('fs').createReadStream('cron.file')
+    input: require('fs').createReadStream(process.argv[3])
 });
-  
+ 
+
 rl.on('line', function (line) {
     if(line){
         cronInput.push(line)
